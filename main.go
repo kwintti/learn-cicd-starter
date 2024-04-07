@@ -25,12 +25,14 @@ type apiConfig struct {
 var staticFiles embed.FS
 
 func main() {
-	err := godotenv.Load(".env")
+    //loading env-file
+	err := godotenv.Load()
 	if err != nil {
 		log.Printf("warning: assuming default configuration. .env unreadable: %v", err)
 	}
 
 	port := os.Getenv("PORT")
+    log.Println(port)
 	if port == "" {
 		log.Fatal("PORT environment variable is not set")
 	}
